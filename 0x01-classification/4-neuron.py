@@ -14,9 +14,9 @@ class Neuron:
         if nx < 1:
             raise ValueError ('nx must be a positive integer')
         
-        self.W=np.random.normal(0, 1, (1 ,nx))
-        self.b=0
-        self.A=0
+        self.W = np.random.normal(0, 1, (1 ,nx))
+        self.b = 0
+        self.A = 0
 
  @property
  def W(self):
@@ -32,7 +32,7 @@ def A(self):
 
 
 def forward_prop(self, X):
-    a1=np.matmul(self.__W, X) + self.__b
+    a1 = np.matmul(self.__W, X) + self.__b
     self.__A = 1 /(1 + np.exp(-a1))
     return self.__A
 
