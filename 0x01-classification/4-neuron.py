@@ -32,15 +32,15 @@ def A(self):
 
 
 def forward_prop(self, X):
-    a1 = np.matmul(self.__W, X) + self.__b
+    a1=np.matmul(self.__W, X) + self.__b
     self.__A = 1 /(1 + np.exp(-a1))
     return self.__A
 
 def cost(self, Y, A):
-    cost = - Y * np.log(A) - (1 - Y) * np.log(1.0000001 - A)
-    sigma = np.sum(cost)
     m = Y.shape[1]
-    cost =  -1/(sigma/m)
+    cost =  Y * np.log(A) + (1 - Y) * np.log(1.0000001 - A)
+    sigma = np.sum(cost)
+    cost =  -(1 / m) * sigma
     return cost
  
 def evaluate(self, X, Y):
