@@ -76,5 +76,20 @@ class Neuron:
                 raise TypeError("step must be an integer")
             if step <= 0 or step > iterations:
                 raise ValueError("step must be positive and <= iterations")
+        cost = []
+        for i in range(iterations):
+            activations = self.forward_prop(X)
+            self.gradient_descent(X, Y, activations, alpha)
+            cost.append(self.cost(Y,self.__A))
+            if verbose is True:
+                print("Cost after {} iterations: {}".format(i,cost[i]))
+
         
+        if graph is True:
+            plt.plot(np.arange(0, iterations + 1), cost)
+            plt.title()
+            plt.xlabel()
+            plt.ylabel()
+            plt.show()
+
         return self.evaluate(X, Y)
